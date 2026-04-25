@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Web3 Developer — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #111118;
+    --border: #1e1e2e;
+    --accent: #00ffe0;
+    --accent2: #7c3aed;
+    --text: #e8e8f0;
+    --muted: #6b6b8a;
+    --tag-bg: #1a1a2e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Grid background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,255,224,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,255,224,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 48px 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Header */
+  .header {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 32px;
+    margin-bottom: 40px;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .badge {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 4px 10px;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    font-size: clamp(28px, 6vw, 48px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -1px;
+  }
+
+  h1 span {
+    color: var(--accent);
+  }
+
+  .tagline {
+    margin-top: 12px;
+    color: var(--muted);
+    font-size: 15px;
+    font-family: 'Space Mono', monospace;
+    line-height: 1.6;
+  }
+
+  .contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 20px;
+  }
+
+  .contact-item {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .contact-item span { color: var(--accent); }
+
+  /* Section */
+  .section {
+    margin-bottom: 44px;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .section:nth-child(2) { animation-delay: 0.1s; }
+  .section:nth-child(3) { animation-delay: 0.2s; }
+  .section:nth-child(4) { animation-delay: 0.3s; }
+  .section:nth-child(5) { animation-delay: 0.4s; }
+
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* Skills grid */
+  .skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .skill-tag {
+    background: var(--tag-bg);
+    border: 1px solid var(--border);
+    padding: 6px 14px;
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    color: var(--text);
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .skill-tag:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .skill-tag.hot {
+    border-color: var(--accent2);
+    color: #a78bfa;
+  }
+
+  /* Project cards */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+  }
+
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 20px;
+    transition: border-color 0.2s, transform 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent2), var(--accent));
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .project-card:hover {
+    border-color: #2e2e4e;
+    transform: translateY(-2px);
+  }
+
+  .project-card:hover::before { opacity: 1; }
+
+  .project-name {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .project-dot {
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .project-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 14px;
+    font-family: 'Space Mono', monospace;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .ptag {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--accent2);
+    background: rgba(124,58,237,0.1);
+    border: 1px solid rgba(124,58,237,0.2);
+    padding: 2px 8px;
+    letter-spacing: 0.5px;
+  }
+
+  /* Value props */
+  .value-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+  }
+
+  .value-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 20px;
+  }
+
+  .value-icon {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+
+  .value-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .value-text {
+    font-size: 12px;
+    color: var(--muted);
+    font-family: 'Space Mono', monospace;
+    line-height: 1.6;
+  }
+
+  /* CTA */
+  .cta-box {
+    background: linear-gradient(135deg, rgba(0,255,224,0.05), rgba(124,58,237,0.08));
+    border: 1px solid var(--border);
+    padding: 28px;
+    text-align: center;
+  }
+
+  .cta-box h3 {
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+
+  .cta-box p {
+    color: var(--muted);
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: var(--accent);
+    color: #000;
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 12px 28px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: opacity 0.2s;
+  }
+
+  .cta-btn:hover { opacity: 0.85; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 500px) {
+    .projects-grid { grid-template-columns: 1fr; }
+    .value-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <header class="header">
+    <div class="badge">&#9632; Available for Contract Work</div>
+    <h1>Full-Stack <span>&</span><br>Web3 Developer</h1>
+    <p class="tagline">
+      Building production-ready blockchain platforms,<br>
+      reward systems, and crypto-integrated applications.
+    </p>
+    <div class="contact-row">
+      <div class="contact-item"><span>✉</span> qodedstuff.rap@gmail.com</div>
+      <div class="contact-item"><span>𝕏</span> @qodedstuff</div>
+      <div class="contact-item"><span>TG</span> @qodedstuff</div>
+      <div class="contact-item"><span>GH</span> qodedstuff</div>
+      <div class="contact-item"><span>DC</span> qoded</div>
+    </div>
+  </header>
+
+  <!-- Skills -->
+  <section class="section">
+    <div class="section-label">Core Skills</div>
+    <div class="skills-grid">
+      <span class="skill-tag hot">Blockchain Integration</span>
+      <span class="skill-tag hot">Smart Contract Interaction</span>
+      <span class="skill-tag hot">Faucet & Reward Systems</span>
+      <span class="skill-tag hot">On-chain Event Listeners</span>
+      <span class="skill-tag">React / Next.js</span>
+      <span class="skill-tag">Node.js / Express</span>
+      <span class="skill-tag">Bull / Redis Queues</span>
+      <span class="skill-tag">PostgreSQL / SQLite</span>
+      <span class="skill-tag">REST APIs</span>
+      <span class="skill-tag">Paystack / Crypto Payments</span>
+      <span class="skill-tag">Railway · Vercel · Netlify</span>
+      <span class="skill-tag">Web3.js / Ethers.js</span>
+      <span class="skill-tag">Multi-exchange CEX APIs</span>
+      <span class="skill-tag">Telegram Bots</span>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section class="section">
+    <div class="section-label">Selected Builds</div>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-name"><span class="project-dot"></span>ARBX PRO</div>
+        <div class="project-desc">15-file CEX arbitrage bot across 5 exchanges. Triangular + cross-exchange strategies, Telegram alerts, backtesting & simulation mode.</div>
+        <div class="project-tags">
+          <span class="ptag">Node.js</span>
+          <span class="ptag">Multi-CEX</span>
+          <span class="ptag">Telegram</span>
+          <span class="ptag">Backtesting</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-name"><span class="project-dot"></span>ChainBridge Pro</div>
+        <div class="project-desc">Cross-chain token bridge frontend combining multi-chain gas routing with embedded 0.05% operator fee model.</div>
+        <div class="project-tags">
+          <span class="ptag">Cross-chain</span>
+          <span class="ptag">DeFi</span>
+          <span class="ptag">Fee Capture</span>
+          <span class="ptag">React</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-name"><span class="project-dot"></span>P2P Arbitrage Monitor</div>
+        <div class="project-desc">Real-time P2P arbitrage scanner across Bybit & Gate.io NGN pairs. Node.js backend with SQLite, deployed to Railway.</div>
+        <div class="project-tags">
+          <span class="ptag">Node.js</span>
+          <span class="ptag">SQLite</span>
+          <span class="ptag">Bybit API</span>
+          <span class="ptag">Railway</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-name"><span class="project-dot"></span>SwiftLoad VTU</div>
+        <div class="project-desc">Nigerian airtime/data reseller platform. Multi-provider fallback, Paystack integration, Bull/Redis job queues, Next.js + Node.js.</div>
+        <div class="project-tags">
+          <span class="ptag">Next.js</span>
+          <span class="ptag">Paystack</span>
+          <span class="ptag">Bull/Redis</span>
+          <span class="ptag">Vercel</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-name"><span class="project-dot"></span>PilgrimPay</div>
+        <div class="project-desc">Hajj/Umrah installment booking platform with multi-agency support and a three-role user system. Production-ready.</div>
+        <div class="project-tags">
+          <span class="ptag">React</span>
+          <span class="ptag">Multi-role</span>
+          <span class="ptag">Payments</span>
+          <span class="ptag">Netlify</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-name"><span class="project-dot"></span>ContentFuel / VideoFuel</div>
+        <div class="project-desc">Faceless content monetization tools using Puter.js & FLUX.1 AI. Built for crypto/Web3 creator niches.</div>
+        <div class="project-tags">
+          <span class="ptag">AI-powered</span>
+          <span class="ptag">Puter.js</span>
+          <span class="ptag">Web3</span>
+          <span class="ptag">Monetization</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Why me -->
+  <section class="section">
+    <div class="section-label">Why Work With Me</div>
+    <div class="value-grid">
+      <div class="value-card">
+        <div class="value-icon">⚡</div>
+        <div class="value-title">Fast Delivery</div>
+        <div class="value-text">I build full production apps solo, from zero to deployed. No bloated teams or slow handoffs.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🔗</div>
+        <div class="value-title">Web3 Native</div>
+        <div class="value-text">On-chain/off-chain systems, faucets, reward pipelines, multi-exchange bots — this is my daily stack.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🐛</div>
+        <div class="value-title">I Find Problems</div>
+        <div class="value-text">I don't just build — I audit, debug, and fix broken systems. I diagnosed your platform issues before being asked.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🌍</div>
+        <div class="value-title">Emerging Market Focus</div>
+        <div class="value-text">Deep experience building for African & crypto-adjacent markets. I understand your users.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section">
+    <div class="cta-box">
+      <h3>Let's Build Together</h3>
+      <p>Open to contract roles, bug fixes, and ongoing technical partnerships.</p>
+      <a class="cta-btn" href="mailto:qodedstuff.rap@gmail.com">Get In Touch →</a>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
