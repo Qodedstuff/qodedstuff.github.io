@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saheed Abdussalam — Resume</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #fafaf8;
+  --text: #111;
+  --muted: #666;
+  --light: #999;
+  --border: #e0e0d8;
+  --accent: #1a1a1a;
+  --tag-bg: #f0f0ec;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.page {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 64px 48px;
+  background: #fff;
+  min-height: 100vh;
+}
+
+/* HEADER */
+.resume-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 32px;
+  align-items: start;
+  padding-bottom: 36px;
+  border-bottom: 2px solid var(--text);
+  margin-bottom: 40px;
+}
+
+.header-left h1 {
+  font-size: 44px;
+  font-weight: 300;
+  letter-spacing: -1px;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.header-left h1 em {
+  font-style: italic;
+  font-weight: 300;
+}
+
+.header-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 10px;
+}
+
+.header-right {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.contact-line {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.3px;
+}
+
+.contact-line a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+/* ROLES ROW */
+.roles-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 40px;
+}
+
+.role-badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  background: var(--tag-bg);
+  color: var(--accent);
+  border: 1px solid var(--border);
+}
+
+/* SECTION */
+.resume-section {
+  margin-bottom: 40px;
+}
+
+.resume-section-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--light);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.resume-section-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* SUMMARY */
+.summary-text {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #333;
+  max-width: 680px;
+}
+
+/* EXPERIENCE */
+.exp-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  margin-bottom: 28px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--border);
+}
+
+.exp-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.exp-role {
+  font-size: 17px;
+  font-weight: 400;
+  margin-bottom: 3px;
+}
+
+.exp-company {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+}
+
+.exp-points {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.exp-points li {
+  font-size: 13px;
+  color: #444;
+  padding-left: 16px;
+  position: relative;
+  line-height: 1.6;
+}
+
+.exp-points li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--border);
+}
+
+.exp-right {
+  text-align: right;
+}
+
+.exp-date {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--light);
+  white-space: nowrap;
+}
+
+.exp-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 10px;
+  justify-content: flex-end;
+}
+
+.et {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  color: var(--muted);
+  background: var(--tag-bg);
+  padding: 2px 7px;
+  letter-spacing: 0.5px;
+}
+
+/* SKILLS */
+.skills-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.skills-table tr {
+  border-bottom: 1px solid var(--border);
+}
+
+.skills-table tr:last-child { border-bottom: none; }
+
+.skills-table td {
+  padding: 10px 0;
+  vertical-align: top;
+}
+
+.skills-table td:first-child {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--light);
+  width: 160px;
+  padding-right: 24px;
+}
+
+.skills-table td:last-child {
+  font-size: 13px;
+  color: #444;
+}
+
+/* TWO COL */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+/* FOOTER */
+.resume-footer {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resume-footer-text {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--light);
+  letter-spacing: 1px;
+}
+
+@media print {
+  body { background: #fff; }
+  .page { padding: 32px; }
+}
+
+@media (max-width: 600px) {
+  .page { padding: 32px 20px; }
+  .resume-header { grid-template-columns: 1fr; }
+  .header-right { text-align: left; }
+  .exp-item { grid-template-columns: 1fr; }
+  .exp-right { display: none; }
+  .two-col { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="resume-header">
+    <div class="header-left">
+      <h1>Saheed <em>Abdussalam</em></h1>
+      <div style="font-size:13px;color:#555;margin-top:8px;max-width:420px;line-height:1.6;">
+        Full-Stack & Web3 Developer with experience across blockchain infrastructure, AI tooling, developer relations, and community growth.
+      </div>
+      <div class="header-title">Available for Remote · Contract · Full-Time</div>
+    </div>
+    <div class="header-right">
+      <span class="contact-line"><a href="mailto:qodedstuff.rap@gmail.com">qodedstuff.rap@gmail.com</a></span>
+      <span class="contact-line"><a href="https://t.me/qodedstuff">t.me/qodedstuff</a></span>
+      <span class="contact-line"><a href="https://x.com/qodedstuff">x.com/qodedstuff</a></span>
+      <span class="contact-line"><a href="https://github.com/qodedstuff">github.com/qodedstuff</a></span>
+      <span class="contact-line"><a href="https://qodedstuff.github.io">qodedstuff.github.io</a></span>
+      <span class="contact-line">Nigeria · Worldwide Remote</span>
+    </div>
+  </div>
+
+  <!-- ROLES -->
+  <div class="roles-row">
+    <span class="role-badge">Full-Stack Engineer</span>
+    <span class="role-badge">Web3 Developer</span>
+    <span class="role-badge">AI Prompt Engineer</span>
+    <span class="role-badge">Developer Relations</span>
+    <span class="role-badge">Technical Writer</span>
+    <span class="role-badge">Community Manager</span>
+  </div>
+
+  <!-- SUMMARY -->
+  <div class="resume-section">
+    <div class="resume-section-title">Profile</div>
+    <p class="summary-text">
+      Independent developer and Web3 specialist who builds production-ready applications from scratch and deploys them solo. 
+      Experienced in on-chain/off-chain systems, faucet infrastructure, reward pipelines, CEX arbitrage bots, and crypto-integrated payments. 
+      Equally comfortable writing technical documentation, managing developer communities, and shipping AI-powered tools. 
+      Strong track record of identifying critical system bugs, diagnosing root causes, and presenting solutions — as demonstrated by 
+      proactively auditing live blockchain platforms and producing detailed technical reports before being asked.
+    </p>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div class="resume-section">
+    <div class="resume-section-title">Projects & Experience</div>
+
+    <div class="exp-item">
+      <div>
+        <div class="exp-role">ARBX PRO — CEX Arbitrage Bot</div>
+        <div class="exp-company">Independent Build · Full-Stack / Web3</div>
+        <ul class="exp-points">
+          <li>Built a 15-file arbitrage system covering 5 CEX exchanges with triangular and cross-exchange strategies</li>
+          <li>Integrated real-time Telegram alerts, backtesting engine, and simulation mode for risk-free testing</li>
+          <li>Designed the full architecture solo — from exchange API normalisation to profit calculation logic</li>
+        </ul>
+        <div class="exp-tags" style="justify-content:flex-start;margin-top:10px;">
+          <span class="et">Node.js</span><span class="et">Multi-CEX APIs</span><span class="et">Telegram Bot</span><span class="et">Backtesting</span>
+        </div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-date">2025 – 2026</div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div>
+        <div class="exp-role">SwiftLoad — VTU Platform</div>
+        <div class="exp-company">Independent Build · Full-Stack / Fintech</div>
+        <ul class="exp-points">
+          <li>End-to-end Nigerian airtime/data reseller app with multi-provider fallback for 100% uptime</li>
+          <li>Integrated Paystack payment gateway and Bull/Redis background job queues for reliable delivery</li>
+          <li>Deployed on Railway + Vercel with Next.js frontend and Node.js backend</li>
+        </ul>
+        <div class="exp-tags" style="justify-content:flex-start;margin-top:10px;">
+          <span class="et">Next.js</span><span class="et">Node.js</span><span class="et">Paystack</span><span class="et">Bull/Redis</span><span class="et">Vercel</span>
+        </div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-date">2025 – 2026</div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div>
+        <div class="exp-role">ChainBridge Pro — Cross-Chain Bridge</div>
+        <div class="exp-company">Independent Build · Web3 / DeFi</div>
+        <ul class="exp-points">
+          <li>Built cross-chain token bridge frontend combining gas.zip and Transporter.io routing concepts</li>
+          <li>Embedded 0.05% operator fee model for sustainable passive revenue generation</li>
+          <li>Multi-chain gas frontend supporting multiple EVM-compatible networks</li>
+        </ul>
+        <div class="exp-tags" style="justify-content:flex-start;margin-top:10px;">
+          <span class="et">React</span><span class="et">Cross-chain</span><span class="et">DeFi</span><span class="et">Fee Model</span>
+        </div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-date">2025 – 2026</div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div>
+        <div class="exp-role">ContentFuel / VideoFuel — AI Content Tools</div>
+        <div class="exp-company">Independent Build · AI / Prompt Engineering</div>
+        <ul class="exp-points">
+          <li>Designed and built AI-powered faceless content creation tools using Claude API, GPT-4, and FLUX.1</li>
+          <li>Integrated Puter.js for client-side AI execution targeting Web3/crypto creator niches</li>
+          <li>Monetization-first design with passive income model built into the product architecture</li>
+        </ul>
+        <div class="exp-tags" style="justify-content:flex-start;margin-top:10px;">
+          <span class="et">Claude API</span><span class="et">FLUX.1</span><span class="et">Puter.js</span><span class="et">Prompt Engineering</span>
+        </div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-date">2025 – 2026</div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div>
+        <div class="exp-role">PilgrimPay — Hajj/Umrah Booking Platform</div>
+        <div class="exp-company">Independent Build · Full-Stack / SaaS</div>
+        <ul class="exp-points">
+          <li>Production-ready installment booking system for Nigerian Hajj/Umrah travel agencies</li>
+          <li>Three-role user system (user, agency, admin) with multi-agency support</li>
+          <li>Single-file React architecture deployed to Netlify</li>
+        </ul>
+        <div class="exp-tags" style="justify-content:flex-start;margin-top:10px;">
+          <span class="et">React</span><span class="et">Multi-role Auth</span><span class="et">Netlify</span>
+        </div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-date">2025 – 2026</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SKILLS -->
+  <div class="resume-section">
+    <div class="resume-section-title">Skills</div>
+    <table class="skills-table">
+      <tr>
+        <td>Frontend</td>
+        <td>React, Next.js, HTML/CSS/JavaScript, Tailwind CSS</td>
+      </tr>
+      <tr>
+        <td>Backend</td>
+        <td>Node.js, Express, Bull/Redis queues, REST API design</td>
+      </tr>
+      <tr>
+        <td>Blockchain</td>
+        <td>Ethers.js, Web3.js, smart contract interaction, faucet systems, on-chain event listeners, multi-CEX APIs</td>
+      </tr>
+      <tr>
+        <td>AI / Prompt</td>
+        <td>Claude API, GPT-4, FLUX.1, Puter.js, system prompt design, structured output engineering</td>
+      </tr>
+      <tr>
+        <td>Database</td>
+        <td>PostgreSQL, SQLite, Redis</td>
+      </tr>
+      <tr>
+        <td>Payments</td>
+        <td>Paystack, crypto payment integrations</td>
+      </tr>
+      <tr>
+        <td>DevOps / Deploy</td>
+        <td>Railway, Vercel, Netlify, GitHub Pages, GitHub Actions</td>
+      </tr>
+      <tr>
+        <td>DevRel / Writing</td>
+        <td>Technical documentation, API guides, bug reports, developer onboarding, tutorial writing</td>
+      </tr>
+      <tr>
+        <td>Community</td>
+        <td>Telegram, Discord moderation & management, X/Twitter, TikTok, faceless content strategy</td>
+      </tr>
+      <tr>
+        <td>Tools</td>
+        <td>Git, GitHub, Termux, Acode, mobile-first development workflow</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- STRENGTHS -->
+  <div class="resume-section">
+    <div class="resume-section-title">Key Strengths</div>
+    <div class="two-col">
+      <div>
+        <div style="font-size:14px;font-weight:400;margin-bottom:6px;">Ships Solo, Ships Fast</div>
+        <div style="font-size:13px;color:#555;line-height:1.6;">Full production apps built and deployed independently — no bloated teams or slow handoffs.</div>
+      </div>
+      <div>
+        <div style="font-size:14px;font-weight:400;margin-bottom:6px;">Finds Problems Before Asked</div>
+        <div style="font-size:13px;color:#555;line-height:1.6;">Proactively audits systems, identifies root causes, and delivers structured technical reports.</div>
+      </div>
+      <div>
+        <div style="font-size:14px;font-weight:400;margin-bottom:6px;">Emerging Market Expertise</div>
+        <div style="font-size:13px;color:#555;line-height:1.6;">Deep understanding of Nigerian and African crypto markets, user behaviours, and payment systems.</div>
+      </div>
+      <div>
+        <div style="font-size:14px;font-weight:400;margin-bottom:6px;">Web3 Native</div>
+        <div style="font-size:13px;color:#555;line-height:1.6;">Faucets, reward pipelines, arbitrage bots, bridges — this is daily work, not just theory.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="resume-footer">
+    <span class="resume-footer-text">Saheed Abdussalam · qodedstuff · 2026</span>
+    <span class="resume-footer-text">qodedstuff.github.io</span>
+  </div>
+
+</div>
+</body>
+</html>
